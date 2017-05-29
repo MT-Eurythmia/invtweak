@@ -9,7 +9,7 @@ tweak.buttons = {
 --sort_desc
 "0.55,0.6;sort_desc;v]".."tooltip[sort_desc;sort Items desc.;#30434C;#FFF]",
 --concatenate
-"0.65,0.6;sort;›•]".."tooltip[sort;stack Items and sort asc.;#30434C;#FFF]"
+"0.65,0.6;sort;ï¿½ï¿½]".."tooltip[sort;stack Items and sort asc.;#30434C;#FFF]"
 }
 
 local function get_formspec_size(formspec)
@@ -158,7 +158,7 @@ tweak.sort = function(player, mode, con)
 	if inv then
 		local list = inv:get_list("main")
 		local tmp_list = {}
-		
+
 		--write whole list as table
 		for _,stack in ipairs(list) do
 			local tbl_stack = stack:to_table()
@@ -271,6 +271,8 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 	local old = wielded.wear[name]
 	if not old and tname == "" then
 		old = 0
+	elseif not old then
+		return
 	end
 	local new = item:get_wear()
 
